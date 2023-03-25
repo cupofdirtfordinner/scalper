@@ -79,7 +79,6 @@ tools += 1;
 sticks -= 2;
 iron -= 1;
 document.getElementById("shovel").style.display = "none";
-document.getElementById("pickaxeUpgradeOne").style.display = "inline-block";
 document.getElementById("digDirt").style.display = "inline-block";
 }}}
 
