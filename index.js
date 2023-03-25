@@ -1,10 +1,10 @@
-wood = 1000;
-planks = 1000;
-sticks = 1000;
-stone = 1000;
+wood = 0;
+planks = 0;
+sticks = 0;
+stone = 0;
 door = 0;
 shelter = 0;
-iron = 10;
+iron = 0;
 dirt = 0;
 
 tools = 0;
