@@ -1,0 +1,73 @@
+<head>
+<link rel="stylesheet" href="styles.css">
+<script src="index.js"></script>
+<title>GrindCraft Clone</title>
+</head>
+<body>
+<div id="stats">
+  <span id="label">stats</span><br>
+  <span>tool level: </span><span id="pickaxeLevel">0</span><br>
+  <span>wood: </span>
+  <span id="woodDisplay">0</span>
+  <span> ▍ </span>
+  <span>stone: </span>
+  <span id="stoneDisplay">0</span>
+  <span> ▍ </span>
+  <span>iron: </span>
+  <span id="ironDisplay">0</span>
+  <span> ▍ </span>
+  <span>dirt: </span>
+  <span id="dirtDisplay">0</span>
+  <span> ▍ </span>
+</div>
+
+<div id="collect">
+  <span id="label">gather</span><br>
+  <button id="collectWood" onclick="collectWood();">Collect Wood</button>
+  <button id="mineStone" onclick="mineStone();">Mine stone</button>
+  <button id="mineIron" onclick="mineIron();">Mine iron</button>
+  <button id="digDirt" onclick="digDirt();">Dig dirt</button>
+</div>
+
+<div id="craft">
+  <span id="label">craft</span><br>
+  <div id="woodToPlanks" class="craftDisplays">
+    <button onclick="woodToPlanks();">wood -> planks</button>
+    <br>
+    <span>planks: </span> <span id="planksDisplay">0</span>
+  </div>
+
+  <div id="planksToSticks" class="craftDisplays">
+    <button onclick="planksToSticks();">planks -> sticks</button>
+    <br>
+    <span>sticks: </span> <span id="sticksDisplay">0</span>
+  </div>
+
+  <div id="planksToDoor" class="craftDisplays">
+    <button onclick="planksToDoor();">6 planks -> door</button>
+    <br>
+    <span>doors: </span> <span id="doorDisplay">0</span>
+  </div>
+
+  <div id="stoneAndDoorToShelter" class="craftDisplays">
+    <button onclick="stoneAndDoorToShelter();">26 stone + 1 door -> = shelter</button>
+    <br>
+    <span>shelters: </span> <span id="shelterDisplay">0</span>
+  </div>
+
+</div>
+
+<div id="tools">
+  <span id="label">tools</span><br>
+  <div id="planksAndSticksToPickaxe"><button onclick="planksAndSticksToPickaxe();">2 sticks + 3 planks -> pickaxe</button></div>
+  <div id="pickaxeUpgradeOne"><button onclick="pickaxeUpgradeOne();">150 planks + 75 stone -> pickaxe upgrade</button>
+  </div>
+  <div id="shovel">
+  <button onclick="sticksAndIronForShovel();">2 sticks + 1 iron -> shovel</button>
+  </div> <br>
+  <span id="label">automation tools</span><br>
+  <div id="planksAndSticksToPickaxe"><button onclick="sticksAndPlanksAndIronToPickaxe();">500 sticks + 100 planks + 25 iron -> iron pickaxe</button>
+  </div>
+</div>
+<span>made with love by cupofdirtfordinner</span>
+</body>
