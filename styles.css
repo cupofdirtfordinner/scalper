@@ -1,4 +1,4 @@
-body {
+ body {
   background: rgb(24, 24, 24);
   color: rgb(125, 125, 125);
   font-family: monospace;
@@ -26,4 +26,9 @@ div {
 #pickaxeUpgradeOne,
 #mineIron, #digDirt, #shovel {
   display: none;
+}
+
+#coins {
+color: white;
+font-size: 14px;
 }
