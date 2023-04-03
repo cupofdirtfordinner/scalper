@@ -1,0 +1,26 @@
+changelog
+YY/MM/DD
+---
+23/04/03
+configuration update
+
+added a configuration bar
+added fucked up saving/loading
+added this changelog
+
+minor changes
+
+added shamelessness (cupofdirtfordinner hyperlink)
+removed equals sign from shelter crafting (formerly "26 stone + 1 door -> shelter")
+changed the ammount shelters sell for
+
+saving barely works. tools dont work right for some reason (i coded those in a scuffed way so ima have to redo that really soon) AND it doesnt save in a cookie eitherand i really have no idea why.kinks will be ironed out eventually, but i might as well push what i have since i havent updated this in like a week
+
+&#%@$#@%$&%@#&$%&@#%$&%@#&$%#@&$%&@#%$&@%#$&%@#&$%@#&$%@&#%$@#%$&%@#&$%@#&$@&#%$&@%
+roadmap
+---
+coin leaderboard (with AWS)
+automation
+mobs
+farming
+achievements
