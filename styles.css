@@ -22,7 +22,7 @@ div {
   display: inline-block;
 }
 
-a {
+a, a:link, a:visited {
   color:rgb(125, 125, 125);
 }
 
