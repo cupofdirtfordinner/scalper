@@ -263,5 +263,16 @@ function load() {
   Load = currentCookie.split(",");
   console.log(Load);
   
-  
+  wood=Load[0];
+  planks=Load[2];
+  sticks=Load[3];
+  stone=Load[4];
+  door=Load[5];
+  shelter=Load[6];
+  iron=Load[7];
+  dirt=Load[8];
+  coins=Load[9];
+  ironPickaxe=Load[10];
+  tools=Load[11];
 }
+  SaveGame = wood + "," + planks + "," + sticks + "," + stone + "," + door + "," + shelter + "," + iron + "," + dirt + "," + coins + "," + ironPickaxe + "," + tools;
