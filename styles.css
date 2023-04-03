@@ -22,13 +22,31 @@ div {
   display: inline-block;
 }
 
+a {
+  color:rgb(125, 125, 125);
+}
+
 #mineStone,
 #pickaxeUpgradeOne,
-#mineIron, #digDirt, #shovel {
+#mineIron, #digDirt, #shovel, #changelog {
   display: none;
 }
 
 #coins {
 color: white;
 font-size: 14px;
+}
+
+#block {
+  background-color:rgb(125, 125, 125);
+  width:calc(100% + 40px);
+  margin-left:-47px;
+}
+
+#title {
+  font-size:40px;
+}
+
+#config {
+  border: none;
 }
