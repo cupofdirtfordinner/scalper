@@ -1,34 +1,51 @@
 <head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+
 <link rel="stylesheet" href="styles.css">
 <script src="index.js"></script>
-<title>GrindCraft Clone</title>
+<title>scalper</title> <!--og name was grindCraft clone, changed it bc it now has an original feature and there are more original features planned-->
 </head>
 <body>
+  <span id="title">scalper</span>
+  <div id="config">
+    <span id="label">configuration</span> <br>
+    <button onclick="save()">save</button>
+    <button onclick="load()">load</button>
+    <span> ▍</span>
+    <button onclick="seeChangelog()">changelog</button>
+  </div>
+  <div id="changelog">
+    <object data="changelog.txt" type="text/plain"
+width="100%" style="height: 40%;">
+<a href="https://github.com/cupofdirtfordinner/scalper/blob/main/changelog.txt">your browser fucked up somewhere</a>
+</object>
+  </div>
+  <div id="block"></div>
 <div id="stats">
   <span id="label">stats</span><br>
   <span>tool level: </span><span id="pickaxeLevel">0</span><br>
   <span id="coins"><span>coins: </span>
   <span id="coinDisplay">0</span></span>
-  <span> ▍ </span>  
+  <span> ▍</span>
   <span>wood: </span>
   <span id="woodDisplay">0</span>
-  <span> ▍ </span>
+  <span> ▍</span>
   <span>stone: </span>
   <span id="stoneDisplay">0</span>
-  <span> ▍ </span>
+  <span> ▍</span>
   <span>iron: </span>
   <span id="ironDisplay">0</span>
-  <span> ▍ </span>
+  <span> ▍</span>
   <span>dirt: </span>
   <span id="dirtDisplay">0</span>
-  <span> ▍ </span>
+  <span> ▍</span>
 </div>
 
 <div id="collect">
   <span id="label">gather</span><br>
-  <button id="collectWood" onclick="collectWood();">Collect Wood</button>
-  <button id="mineStone" onclick="mineStone();">Mine stone</button>
   <button id="mineIron" onclick="mineIron();">Mine iron</button>
+  <button id="collectWood" onclick="collectWood();">Chop Wood</button>
+  <button id="mineStone" onclick="mineStone();">Mine stone</button>
   <button id="digDirt" onclick="digDirt();">Dig dirt</button>
 </div>
 
@@ -53,7 +70,7 @@
   </div>
 
   <div id="stoneAndDoorToShelter" class="craftDisplays">
-    <button onclick="stoneAndDoorToShelter();">26 stone + 1 door -> = shelter</button>
+    <button onclick="stoneAndDoorToShelter();">26 stone + 1 door -> shelter</button>
     <br>
     <span>shelters: </span> <span id="shelterDisplay">0</span>
   </div>
@@ -84,5 +101,5 @@
 <button onclick="sellshelter()">shelter</button>
 
 </div>
-<span>made with love by cupofdirtfordinner</span>
+<span>made with love by <a href="https://dirt.cool">cupofdirtfordinner</a></span>
 </body>
