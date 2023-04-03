@@ -249,8 +249,8 @@ function saveFile() {
 }
 
 function save() {
-  document.cookie = SaveGame;
-  console.log(document.cookie);
+  Document.cookie = SaveGame;
+  console.log(Document.cookie);
 
 }
 
@@ -258,8 +258,8 @@ var Load = 0;
 var currentCookie = 0;
 
 function load() {
-  currentCookie = document.cookie;
-  console.log(currentCookie + ", " + document.cookie);
+  currentCookie = Document.cookie;
+  console.log(currentCookie + ", " + Document.cookie);
   Load = currentCookie.split(",");
   console.log(Load);
   
@@ -275,4 +275,4 @@ function load() {
   ironPickaxe=Load[10];
   tools=Load[11];
 }
-  SaveGame = wood + "," + planks + "," + sticks + "," + stone + "," + door + "," + shelter + "," + iron + "," + dirt + "," + coins + "," + ironPickaxe + "," + tools;
+
