@@ -1,18 +1,18 @@
-wood = 0;
-planks = 0;
-sticks = 0;
-stone = 0;
-door = 0;
-shelter = 0;
-iron = 0;
-dirt = 0;
-coins = 0;
+var wood = 0;
+var planks = 0;
+var sticks = 0;
+var stone = 0;
+var door = 0;
+var shelter = 0;
+var iron = 0;
+var dirt = 0;
+var coins = 0;
 
-ironPickaxe = 0;
-tools = 0;
+var ironPickaxe = 0;
+var tools = 0;
 
-random = 0;
-changelog = 0;
+var random = 0;
+var changelog = 0;
 
 function seeChangelog() {
   if (changelog === 0) {
@@ -263,16 +263,16 @@ function load() {
   Load = currentCookie.split(",");
   console.log(Load);
   
-  wood=Load[0];
-  planks=Load[2];
-  sticks=Load[3];
-  stone=Load[4];
-  door=Load[5];
-  shelter=Load[6];
-  iron=Load[7];
-  dirt=Load[8];
-  coins=Load[9];
-  ironPickaxe=Load[10];
-  tools=Load[11];
+  wood=parseInt(Load[0]);
+  planks=parseInt(Load[2]);
+  sticks=parseInt(Load[3]);
+  stone=parseInt(Load[4]);
+  door=parseInt(Load[5]);
+  shelter=parseInt(Load[6]);
+  iron=parseInt(Load[7]);
+  dirt=parseInt(Load[8]);
+  coins=parseInt(Load[9]);
+  ironPickaxe=parseInt(Load[10]);
+  tools=(parseInt(Load[11]))+1;
 }
 
