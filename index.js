@@ -249,18 +249,18 @@ function saveFile() {
 }
 
 function save() {
-  Document.cookie = SaveGame;
-  console.log(Document.cookie);
+  localStorage.setItem("save", SaveGame);
+  console.log(localStorage.getItem("save"));
 
 }
 
 var Load = 0;
-var currentCookie = 0;
+var loadedSave = 0;
 
 function load() {
-  currentCookie = Document.cookie;
-  console.log(currentCookie + ", " + Document.cookie);
-  Load = currentCookie.split(",");
+  loadedSave = localStorage.getItem("save");
+  console.log(loadedSave + ", " + localStorage.getItem("save"));
+  Load = localStorage.getItem("save").split(",");
   console.log(Load);
   
   wood=parseInt(Load[0]);
