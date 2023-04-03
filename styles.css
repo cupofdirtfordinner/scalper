@@ -23,7 +23,7 @@ div {
 }
 
 a, a:link, a:visited {
-  color:rgb(125, 125, 125);
+  color: rgb(125, 125, 125);
 }
 
 #mineStone,
@@ -44,7 +44,7 @@ font-size: 14px;
 }
 
 #title {
-  font-size:40px;
+  font-size: 40px;
 }
 
 #config {
