@@ -264,15 +264,15 @@ function load() {
   console.log(Load);
   
   wood=parseInt(Load[0]);
-  planks=parseInt(Load[2]);
-  sticks=parseInt(Load[3]);
-  stone=parseInt(Load[4]);
-  door=parseInt(Load[5]);
-  shelter=parseInt(Load[6]);
-  iron=parseInt(Load[7]);
-  dirt=parseInt(Load[8]);
-  coins=parseInt(Load[9]);
-  ironPickaxe=parseInt(Load[10]);
-  tools=(parseInt(Load[11]))+1;
+  planks=parseInt(Load[1]);
+  sticks=parseInt(Load[2]);
+  stone=parseInt(Load[3]);
+  door=parseInt(Load[4]);
+  shelter=parseInt(Load[5]);
+  iron=parseInt(Load[6]);
+  dirt=parseInt(Load[7]);
+  coins=parseInt(Load[8]);
+  ironPickaxe=parseInt(Load[9]);
+  tools=parseInt(Load[10]);
 }
 
