@@ -1,104 +1,129 @@
 <head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
-  <title>scalper</title>
-<link rel="stylesheet" href="styles.css">
-<script src="index.js"></script>
-<span id="title">scalper</span> <!--og name was grindCraft clone, changed it bc it now has an original feature and there are more original features planned-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="index.js"></script>
+  <span id="title">scalper</span>
+  <!--og name was grindCraft clone, changed it bc it now has an original feature and there are more original features planned-->
 </head>
+
 <body>
+  <!--  onload="load()"  -->
   <div id="config">
     <span id="label">configuration</span> <br>
-    <button onclick="save()">save</button>
-    <button onclick="load()">load</button>
-    <span> ▍</span>
+    <button onclick="showsettings();">settings</button>
+    <span>|</span>
     <button onclick="seeChangelog()">changelog</button>
+    <div id="settingsTab">
+      <button onclick="save()">save</button>
+      <button onclick="load()">load</button>
+      <input id="name" type="text" placeholder="set name">
+    </div>
   </div>
   <div id="changelog">
-    <object data="changelog.txt" type="text/plain"
-width="100%" style="height: 40%;">
-<a href="https://github.com/cupofdirtfordinner/scalper/blob/main/changelog.txt">your browser fucked up somewhere</a>
-</object>
+    <object data="changelog.txt" type="text/plain" width="100%" style="height: 40%;">
+      <a href="https://github.com/cupofdirtfordinner/scalper/blob/main/changelog.txt">your browser fucked up somewhere</a>
+    </object>
   </div>
   <div id="block"></div>
-<div id="stats">
-  <span id="label">stats</span><br>
-  <span>tool level: </span><span id="pickaxeLevel">0</span><br>
-  <span id="coins"><span>coins: </span>
-  <span id="coinDisplay">0</span></span>
-  <span> ▍</span>
-  <span>wood: </span>
-  <span id="woodDisplay">0</span>
-  <span> ▍</span>
-  <span>stone: </span>
-  <span id="stoneDisplay">0</span>
-  <span> ▍</span>
-  <span>iron: </span>
-  <span id="ironDisplay">0</span>
-  <span> ▍</span>
-  <span>dirt: </span>
-  <span id="dirtDisplay">0</span>
-  <span> ▍</span>
-</div>
+  <div id="stats">
+    <span id="label">stats</span><br>
+    <span>tools: </span><span id="toolDisp">0</span><br>
+    <span id="coins"><span>coins: </span>
+      <span id="coinDisplay">0</span></span>
+        <span>|</span>
+    <span>wood: </span>
+    <span id="woodDisplay">0</span>
+        <span>|</span>
+    <span>stone: </span>
+    <span id="stoneDisplay">0</span>
+        <span>|</span>
+    <span>iron: </span>
+    <span id="ironDisplay">0</span>
+        <span>|</span>
+    <span>dirt: </span>
+    <span id="dirtDisplay">0</span>
+        <span>|</span>
+    <span>wheat: </span>
+    <span id="wheatDisplay">0</span>
+    <span> </span>
+  </div>
 
-<div id="collect">
-  <span id="label">gather</span><br>
-  <button id="mineIron" onclick="mineIron();">Mine iron</button>
-  <button id="collectWood" onclick="collectWood();">Chop Wood</button>
-  <button id="mineStone" onclick="mineStone();">Mine stone</button>
-  <button id="digDirt" onclick="digDirt();">Dig dirt</button>
-</div>
+  <div id="collect">
+    <span id="label">gather</span><br>
+    <button id="mineIron" onclick="mineIron();">Mine iron</button>
+    <button id="collectWood" onclick="collectWood();">Chop Wood</button>
+    <button id="mineStone" onclick="mineStone();">Mine stone</button>
+    <button id="digDirt" onclick="digDirt();">Dig dirt</button>
+    <button id="refillWater" onclick="refillWater();">Refill water</button>
+    <button id="reapCrops" onclick="reapCrops();">Reap crops</button>
+  </div>
 
-<div id="craft">
-  <span id="label">craft</span><br>
-  <div id="woodToPlanks" class="craftDisplays">
-    <button onclick="woodToPlanks();">wood -> planks</button>
+  <div id="craft">
+    <span id="label">craft</span><br>
+    <div id="woodToPlanks" class="craftDisplays">
+      <button onclick="woodToPlanks();">wood -> planks</button>
+      <br>
+      <span>planks: </span> <span id="planksDisplay">0</span>
+    </div>
+
+    <div id="planksToSticks" class="craftDisplays">
+      <button onclick="planksToSticks();">planks -> sticks</button>
+      <br>
+      <span>sticks: </span> <span id="sticksDisplay">0</span>
+    </div>
+
+    <div id="planksToDoor" class="craftDisplays">
+      <button onclick="planksToDoor();">6 planks -> door</button>
+      <br>
+      <span>doors: </span> <span id="doorDisplay">0</span>
+    </div>
+
+    <div id="stoneAndDoorToShelter" class="craftDisplays">
+      <button onclick="stoneAndDoorToShelter();">26 stone + 1 door -> shelter</button>
+      <br>
+      <span>shelters: </span> <span id="shelterDisplay">0</span>
+    </div>
+
+    <div id="farm" class="craftDisplays">
+      <button onclick="dirtAndWaterForFarm();">8 dirt + water -> farm</button>
+      <br>
+      <span>farms: </span> <span id="farmDisplay">0</span>
+    </div>
+
+  </div>
+
+  <div id="tools">
+    <span id="label">tools</span><br>
+    <div id="planksAndSticksToPickaxe"><button onclick="planksAndSticksToPickaxe();">2 sticks + 3 planks -> pickaxe</button></div>
+    <div id="pickaxeUpgradeOne"><button onclick="pickaxeUpgradeOne();">150 planks + 75 stone -> pickaxe upgrade</button>
+    </div>
+    <div id="shovel">
+      <button onclick="sticksAndIronForShovel();">2 sticks + 1 iron -> shovel</button>
+    </div>
+    <div id="bucket">
+      <button onclick="ironForBucket();">3 iron -> bucket</button>
+    </div>
     <br>
-    <span>planks: </span> <span id="planksDisplay">0</span>
+    <span id="label">automation tools</span><br>
+    <div id="planksAndSticksToPickaxe"><button onclick="sticksAndPlanksAndIronToPickaxe();">500 sticks + 100 planks + 25 iron -> iron pickaxe</button>
+    </div>
   </div>
-
-  <div id="planksToSticks" class="craftDisplays">
-    <button onclick="planksToSticks();">planks -> sticks</button>
-    <br>
-    <span>sticks: </span> <span id="sticksDisplay">0</span>
+  <div id="sell">
+    <span>sell</span> <br>
+    <button onclick="sellwood()">wood</button>
+    <button onclick="sellstone()">stone</button>
+    <button onclick="selliron()">iron</button>
+    <button onclick="selldirt()">dirt</button>
+    <button onclick="sellplanks()">planks</button>
+    <button onclick="sellsticks()">stick</button>
+    <button onclick="selldoor()">door</button>
+    <button onclick="sellshelter()">shelter</button>
+    <button onclick="sellfarm()">farm</button>
+    <button onclick="sellwheat()">wheat</button>
   </div>
-
-  <div id="planksToDoor" class="craftDisplays">
-    <button onclick="planksToDoor();">6 planks -> door</button>
-    <br>
-    <span>doors: </span> <span id="doorDisplay">0</span>
-  </div>
-
-  <div id="stoneAndDoorToShelter" class="craftDisplays">
-    <button onclick="stoneAndDoorToShelter();">26 stone + 1 door -> shelter</button>
-    <br>
-    <span>shelters: </span> <span id="shelterDisplay">0</span>
-  </div>
-
-</div>
-
-<div id="tools">
-  <span id="label">tools</span><br>
-  <div id="planksAndSticksToPickaxe"><button onclick="planksAndSticksToPickaxe();">2 sticks + 3 planks -> pickaxe</button></div>
-  <div id="pickaxeUpgradeOne"><button onclick="pickaxeUpgradeOne();">150 planks + 75 stone -> pickaxe upgrade</button>
-  </div>
-  <div id="shovel">
-  <button onclick="sticksAndIronForShovel();">2 sticks + 1 iron -> shovel</button>
-  </div> <br>
-  <span id="label">automation tools</span><br>
-  <div id="planksAndSticksToPickaxe"><button onclick="sticksAndPlanksAndIronToPickaxe();">500 sticks + 100 planks + 25 iron -> iron pickaxe</button>
-  </div>
-</div>
-<div id="sell">
-<span>sell</span> <br>
-<button onclick="sellwood()">wood</button>
-<button onclick="sellstone()">stone</button>
-<button onclick="selliron()">iron</button>
-<button onclick="selldirt()">dirt</button>
-<button onclick="sellplanks()">planks</button>
-<button onclick="sellsticks()">stick</button>
-<button onclick="selldoor()">door</button>
-<button onclick="sellshelter()">shelter</button>
-
-</div>
-<span>made with love by <a href="https://dirt.cool">cupofdirtfordinner</a></span>
+  <span>made with love by <a href="https://dirt.cool">cupofdirtfordinner</a></span>
+  <button id="devtools" onclick="devtools()">
+    devtools
+  </button>
 </body>
