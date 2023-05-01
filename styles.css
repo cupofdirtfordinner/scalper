@@ -1,52 +1,75 @@
  body {
-  background: rgb(24, 24, 24);
-  color: rgb(125, 125, 125);
-  font-family: monospace;
-  font-weight: bold;
-}
+   background: rgb(24, 24, 24);
+   color: rgb(125, 125, 125);
+   font-family: monospace;
+   font-weight: bold;
+ }
 
-button {
-  background: rgb(50, 50, 50);
-  color: rgb(200, 200, 200);
-  font-family: monospace;
-}
+ input {
+   background-color: rgba(0, 0, 0, 0);
+   color: grey;
+ }
 
-div {
-  border: solid;
-  padding: 4px;
-  margin: 4px;
-}
+ button {
+   background: rgb(50, 50, 50);
+   color: rgb(200, 200, 200);
+   font-family: monospace;
+ }
 
-.craftDisplays {
-  width: fit-content;
-  display: inline-block;
-}
+ div {
+   border: solid;
+   padding: 4px;
+   margin: 4px;
+ }
 
-a, a:link, a:visited {
-  color: rgb(125, 125, 125);
-}
+ .craftDisplays {
+   width: fit-content;
+   display: inline-block;
+   border-style: none;
+ }
 
-#mineStone,
-#pickaxeUpgradeOne,
-#mineIron, #digDirt, #shovel, #changelog {
-  display: none;
-}
+ #tools div {
+   border-style: none;
+ }
 
-#coins {
-color: white;
-font-size: 14px;
-}
+ a,
+ a:link,
+ a:visited {
+   color: rgb(125, 125, 125);
+ }
 
-#block {
-  background-color:rgb(125, 125, 125);
-  width:calc(100% + 40px);
-  margin-left:-47px;
-}
+ #mineStone,
+ #mineIron,
+ #digDirt,
+ #shovel,
+ #bucket,
+ #changelog,
+ #refillWater,
+ #reapCrops,
+ #devtools {
+   display: none;
+ }
 
-#title {
-  font-size: 40px;
-}
+ #coins {
+   color: white;
+   font-size: 14px;
+ }
 
-#config {
-  border: none;
-}
+ #block {
+   background-color: rgb(125, 125, 125);
+   width: calc(100% + 40px);
+   margin-left: -47px;
+ }
+
+ #settingsTab {
+   width: fit-content;
+   display: none;
+ }
+
+ #title {
+   font-size: 40px;
+ }
+
+ #config {
+   border: none;
+ }
