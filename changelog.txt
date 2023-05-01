@@ -1,15 +1,23 @@
 changelog
 YY/MM/DD
 ---
+23/05/01
+configuration update II
+
+major updates:
+fixed saving and loading
+
+that's about it. I have like 4 other projects still ongoing so this might not be updated as frequently.
+---
 23/04/03
 configuration update
 
+major updates:
 added a configuration bar
 added fucked up saving/loading
 added this changelog
 
-minor changes
-
+minor changes:
 added shamelessness (cupofdirtfordinner hyperlink)
 removed equals sign from shelter crafting (formerly "26 stone + 1 door -> shelter")
 changed the ammount shelters sell for
