@@ -1,24 +1,88 @@
-var wood = 0;
-var planks = 0;
-var sticks = 0;
-var stone = 0;
-var door = 0;
-var shelter = 0;
-var iron = 0;
-var dirt = 0;
-var coins = 0;
+var values = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+var wood = values[0];
+var planks = values[1];
+var sticks = values[2];
+var stone = values[3];
+var door = values[4];
+var shelter = values[5];
+var iron = values[6];
+var dirt = values[7];
+var coins = values[8];
+var farm = values[9];
+var villagers = values[10];
+var wheat = values[11];
+
+function updateValues() {
+	username = document.getElementById("name").value;
+  values[0] = wood;
+  values[1] = planks;
+  values[2] = sticks;
+  values[3] = stone;
+  values[4] = door;
+  values[5] = shelter;
+  values[6] = iron;
+  values[7] = dirt;
+  values[8] = coins;
+  values[9] = farm;
+  values[10] = villagers;
+  values[11] = wheat;
+  values[12] = toolArray[0]
+  values[13] = toolArray[1]
+  values[14] = toolArray[2]
+  values[15] = toolArray[3]
+  values[16] = toolArray[4]
+}
+
+function loadValues() {
+  document.getElementById("name").value = username;
+  wood = parseInt(values[0]);
+  planks = parseInt(values[1]);
+  sticks = parseInt(values[2]);
+  stone = parseInt(values[3]);
+  door = parseInt(values[4]);
+  shelter = parseInt(values[5]);
+  iron = parseInt(values[6]);
+  dirt = parseInt(values[7]);
+  coins = parseInt(values[8]);
+  farm = parseInt(values[9]);
+  villagers = parseInt(values[10]);
+  wheat = parseInt(values[11]);
+  toolArray[0] = parseInt(values[12]);
+  toolArray[1] = parseInt(values[13]);
+  toolArray[2] = parseInt(values[14]);
+  toolArray[3] = parseInt(values[15]);
+  toolArray[4] = parseInt(values[16]);
+}
 
 var ironPickaxe = 0;
-var tools = 0;
+var toolArray = [0, 0, 0, 0, 0];
+//pickaxe, shovel, axe, sword, bucket
+//axe sword and bucket not yet implemented
+var autoToolArray = [0, 0, 0];
+var villagerArray = [0, 0, 0];
+//pickaxe, shovel, axe
 
 var random = 0;
 var changelog = 0;
+var setting = 0;
+var username = 0;
+var chancce = 0;
 
 function seeChangelog() {
   if (changelog === 0) {
     changelog = 1;
   } else {
     changelog = 0;
+  }
+}
+
+
+function showsettings() {
+  if (setting === 0) {
+    setting = 1;
+  } else {
+    setting = 0;
   }
 }
 
@@ -41,6 +105,15 @@ function digDirt() {
   dirt += 1;
 }
 
+function refillWater() {
+  toolArray[4] = 2;
+  document.getElementById("refillWater").style.display = "none";
+}
+
+function harvestWheat() {
+  wheat += farm;
+}
+
 function planksToSticks() {
   if (planks >= 2) {
     planks -= 2;
@@ -51,7 +124,7 @@ function planksToSticks() {
 function planksToDoor() {
   if (planks >= 6) {
     planks -= 6;
-    door += 1;
+    values[4] += 1;
   }
 }
 
@@ -65,23 +138,22 @@ function stoneAndDoorToShelter() {
   }
 }
 
-function ironToBucket() {
+function ironForBucket() {
   if (iron >= 3) {
-    tool += 1;
+    toolArray[4] = 1;
+    iron -= 3;
+    document.getElementById("bucket").style.display = "none";
   }
 }
 
 function planksAndSticksToPickaxe() {
   if (planks >= 3) {
     if (sticks >= 2) {
-      tools += 1;
+      toolArray[0] = 1;
       planks -= 3;
       sticks -= 2;
 
       document.getElementById("planksAndSticksToPickaxe").style.display = "none";
-      document.getElementById("pickaxeUpgradeOne").style.display = "inline-block";
-      document.getElementById("mineStone").style.display = "inline-block";
-      console.log("tools = " + tools);
     }
   }
 }
@@ -89,7 +161,7 @@ function planksAndSticksToPickaxe() {
 function sticksAndIronForShovel() {
   if (sticks >= 2) {
     if (iron >= 1) {
-      tools += 1;
+      toolArray[1] = 1;
       sticks -= 2;
       iron -= 1;
       document.getElementById("shovel").style.display = "none";
@@ -98,14 +170,24 @@ function sticksAndIronForShovel() {
   }
 }
 
+function dirtAndWaterForFarm() {
+  if (dirt >= 8) {
+    if (toolArray[4] === 2) {
+      farm += 1;
+      dirt -= 8;
+      toolArray[4] = 1
+    }
+  }
+}
+
 function sticksAndPlanksAndIronToPickaxe() {
-  if (sticks >= 500) {
-    if (planks >= 100) {
-      if (iron >= 25) {
+  if (values[2] >= 500) {
+    if (values[1] >= 100) {
+      if (values[6] >= 25) {
         ironPickaxe += 1;
-        sticks -= 500;
-        planks -= 100;
-        iron -= 25;
+        values[2] -= 500;
+        values[1] -= 100;
+        values[6] -= 25;
       }
     }
   }
@@ -114,11 +196,12 @@ function sticksAndPlanksAndIronToPickaxe() {
 function pickaxeUpgradeOne() {
   if (planks >= 150) {
     if (stone >= 75) {
-      tools += 1;
+      toolArray[0] = 1;
       planks -= 150;
       stone -= 75;
       document.getElementById("pickaxeUpgradeOne").style.display = "none";
       document.getElementById("shovel").style.display = "inline-block";
+      document.getElementById("bucket").style.display = "inline-block";
     }
   }
 }
@@ -133,14 +216,14 @@ function sellwood() {
 function sellstone() {
   if (stone >= 1) {
     stone -= 1;
-    coins += 4;
+    coins += 2;
   }
 }
 
 function selliron() {
   if (iron >= 1) {
     iron -= 1;
-    coins += 12;
+    coins += 40;
   }
 }
 
@@ -179,6 +262,24 @@ function sellshelter() {
   }
 }
 
+function sellfarm() {
+  if (farm > 0) {
+    farm -= 1;
+    coins += 12;
+  }
+}
+
+function sellwheat() {
+  if (wheat > 0) {
+    wheat -= 1;
+    coins += 1;
+  }
+}
+
+function reapCrops() {
+  farm += wheat;
+  document.getElementById("wheatDisplay").style.display = "none";
+}
 
 function forever() {
   document.getElementById("woodDisplay").innerHTML = wood;
@@ -187,32 +288,54 @@ function forever() {
   document.getElementById("stoneDisplay").innerHTML = stone;
   document.getElementById("doorDisplay").innerHTML = door;
   document.getElementById("shelterDisplay").innerHTML = shelter;
-  document.getElementById("pickaxeLevel").innerHTML = tools;
+  document.getElementById("toolDisp").innerHTML = toolArray;
   document.getElementById("dirtDisplay").innerHTML = dirt;
   document.getElementById("ironDisplay").innerHTML = iron;
   document.getElementById("coinDisplay").innerHTML = coins;
+  document.getElementById("farmDisplay").innerHTML = farm;
+  document.getElementById("wheatDisplay").innerHTML = wheat;
 
+  if (toolArray[0] > 0) {
+    document.getElementById("mineStone").style.display = "inline"
+  }
+
+  if (username === "secret code") {
+    document.getElementById("devtools").style.display = "inline"
+  }
   if (changelog === 1) {
     document.getElementById("changelog").style.display = "block";
   } else {
     if (changelog === 0) {
       document.getElementById("changelog").style.display = "none";
     }
+    if (setting === 1) {
+      document.getElementById("settingsTab").style.display = "block";
+    } else {
+      if (setting === 0) {
+        document.getElementById("settingsTab").style.display = "none";
+      }
+    }
+  
+  
   }
 
-
-  SaveGame = wood + "," + planks + "," + sticks + "," + stone + "," + door + "," + shelter + "," + iron + "," + dirt + "," + coins + "," + ironPickaxe + "," + tools;
-
-  //"\n"+"wood:'"+wood+"' \n"+"planks:"+planks+"\n"+"sticks:"+sticks+"\n"+"stone:"+stone+"\n"+"doors:"+door+"\n"+"shelters:"+shelter+"\n"+"iron:"+iron+"\n"+"dirt:"+dirt+"\n"+"coins:"+coins+"\n"+"iron pickaxes:"+ironPickaxe+"\n"+"tool level:"+tools+"\n";
+  SaveGame = values;
+  SaveGameTables = toolArray + "\n" + autoToolArray
 }
 
 function sometimes() {
-  //console.log(random);
-  random = (Math.random() * 100);
-  if (tools >= 2) {
-    if (random > 85) {
-      document.getElementById("mineIron").style.display = "inline-block";
-    }
+  console.log("sometimes");
+  if (toolArray[0] > 1) {
+    document.getElementById("mineIron").style.display = "inline-block";
+  }
+
+  if (toolArray[4] === 1) {
+    //if (random > 30) {
+    document.getElementById("refillWater").style.display = "inline-block";
+  }
+  if (farm > 0) {
+    //if (random > 30) {
+    document.getElementById("reapCrops").style.display = "inline-block";
   }
 }
 
@@ -227,11 +350,9 @@ var intervalId = window.setInterval(function() {
 
 var intervalId = window.setInterval(function() {
   sometimes()
-}, 4000);
+}, 12000);
 
 var SaveGame = 0;
-//CODE FROM HELL. INLINE STYLES LOOKING ASS
-// prolly unneeded // var allVar = "wood:"+wood+";"+"planks:"+planks+";"+"sticks:"+sticks+";"+"stone:"+stone+";"+"door:"+door+";"+"shelter:"+shelter+";"+"iron:"+iron+";"+"dirt:"+dirt+";"+"coins:"+coins+";"+"ironPickaxe:"+ironPickaxe+";"+"tools:"+tools+";"; 
 
 function saveFile() {
   var file = new File([allVarNewLine], 'save.txt', {
@@ -249,30 +370,40 @@ function saveFile() {
 }
 
 function save() {
-  localStorage.setItem("save", SaveGame);
+	updateValues();
+  localStorage.setItem("save", values);
+  localStorage.setItem("username", username);
   console.log(localStorage.getItem("save"));
+  console.log(username);
+  console.log("game saved");
+}
 
+function makewood4() {
+  wood = 4;
 }
 
 var Load = 0;
 var loadedSave = 0;
 
 function load() {
-  loadedSave = localStorage.getItem("save");
-  console.log(loadedSave + ", " + localStorage.getItem("save"));
-  Load = localStorage.getItem("save").split(",");
-  console.log(Load);
-  
-  wood=parseInt(Load[0]);
-  planks=parseInt(Load[1]);
-  sticks=parseInt(Load[2]);
-  stone=parseInt(Load[3]);
-  door=parseInt(Load[4]);
-  shelter=parseInt(Load[5]);
-  iron=parseInt(Load[6]);
-  dirt=parseInt(Load[7]);
-  coins=parseInt(Load[8]);
-  ironPickaxe=parseInt(Load[9]);
-  tools=parseInt(Load[10]);
+  values = localStorage.getItem("save");
+  values = values.split(",")
+  username = localStorage.getItem("username");
+  loadValues();
+  console.log(localStorage.getItem("save"))
+  console.log(localStorage.getItem("username"))
+  console.log(values);
+  console.log(username)
+  document.getElementById("name").value = username;
+
+  console.log("game loaded");
 }
 
+function devtools() {
+  if (username === "secret code") {
+    localStorage.setItem("save", "99999999,99999999,99999999,99999999,99999999,99999999,99999999,99999999,99999999,99999999,99999999,99999999,99999999,99999999,99999999,99999999,99999999,99999999");
+    console.log("wee wah");
+  } else {
+    console.log("loser!");
+  }
+}
